@@ -12,7 +12,6 @@ public class Dialog : MonoBehaviour
     public float typingSpeed = 0.045f;
     public float waitingTime;
     bool ok = true;
-    
 
     void Start()
     {
