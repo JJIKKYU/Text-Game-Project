@@ -3,20 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class Dialog : MonoBehaviour
+public class Title : MonoBehaviour
 {
     public TextMeshProUGUI textDisplay;
     [TextArea]
     public string[] sentences;
     private int index;
-    public float typingSpeed = 0.0005f;
+    public float typingSpeed = 0.025f;
     public float waitingTime;
-    public GameObject gameStart;
     bool ok = true;
 
     void Start()
     {
-        gameStart.SetActive(false);
         // 오프닝 특성상 딜레이 설정
         Invoke("startText", waitingTime);
     }
@@ -47,11 +45,6 @@ public class Dialog : MonoBehaviour
                     index++;
                     startText();
                 }
-                if (sentences.Length - 1 == index)
-                {
-                    typingSpeed = 0.00001f;
-                    gameStart.SetActive(true);
-                }
                 if (Input.GetMouseButton(0))
                 {
                     StopAllCoroutines();
@@ -64,9 +57,9 @@ public class Dialog : MonoBehaviour
                 textDisplay.text = "";
                 for (int i = 0; i < sentences.Length; i++)
                 {
-                    gameStart.SetActive(true);
+
                     textDisplay.text += sentences[i];
-                }                
+                }
             }
         }
     }
