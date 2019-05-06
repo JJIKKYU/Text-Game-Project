@@ -16,6 +16,7 @@ public class Dialog : MonoBehaviour
 
     void Start()
     {
+        textDisplay.text = "";
         gameStart.SetActive(false);
         // 오프닝 특성상 딜레이 설정
         Invoke("startText", waitingTime);
@@ -45,6 +46,7 @@ public class Dialog : MonoBehaviour
                 if (check == sentences[index].Length && sentences.Length - 1 != index)
                 {
                     index++;
+                    textDisplay.text += '\n';
                     startText();
                 }
                 if (sentences.Length - 1 == index)
@@ -65,7 +67,7 @@ public class Dialog : MonoBehaviour
                 for (int i = 0; i < sentences.Length; i++)
                 {
                     gameStart.SetActive(true);
-                    textDisplay.text += sentences[i];
+                    textDisplay.text += sentences[i] + '\n';
                 }                
             }
         }

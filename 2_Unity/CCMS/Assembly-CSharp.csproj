@@ -65,6 +65,7 @@
     <Compile Include="Assets\Scripts\Delay.cs" />
     <Compile Include="Assets\Scripts\Dialog.cs" />
     <Compile Include="Assets\Scripts\GameCheckObject.cs" />
+    <Compile Include="Assets\Scripts\NextButton.cs" />
     <Compile Include="Assets\Scripts\SceneChanger.cs" />
     <Compile Include="Assets\Scripts\Title.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
