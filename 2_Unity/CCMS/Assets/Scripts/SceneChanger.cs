@@ -5,10 +5,22 @@ using UnityEngine.SceneManagement;
 
 public class SceneChanger : MonoBehaviour
 {
-    public string SceneName;
+    public string sceneName;
+    public GameObject[] selectButton;
+    public string[] select;
+    private string ButtonName;
+
+    private void Awake()
+    {
+    }
 
     public void ChangeGameScene()
     {
-        SceneManager.LoadScene(SceneName);
+        SceneManager.LoadScene(sceneName);
+    }
+
+    public void KeywordBoolChanger()
+    {
+        GameCheckObject.EmotionGet = true;
     }
 }
