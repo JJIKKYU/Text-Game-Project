@@ -24,12 +24,6 @@ public class Title : MonoBehaviour
         StartCoroutine(Type());
     }
 
-    void Update()
-    {
-        Debug.Log("index : " + index);
-        Debug.Log("Length : " + sentences.Length);
-    }
-
     IEnumerator Type()
     {
         int check = 0;

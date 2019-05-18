@@ -5,21 +5,43 @@ using TMPro;
 
 public class Dialog : MonoBehaviour
 {
+    // 버튼 이름 관련
+    public TextMeshProUGUI buttonName;
+    [TextArea]
+    public string buttonNameValue;
+    public GameObject gameStart;
+
+    // 본문 관련
     public TextMeshProUGUI textDisplay;
     [TextArea]
     public string[] sentences;
+
+    // 선택 버튼 활성화 관련
+    static public bool checkButton = false;
+
     private int index;
     public float typingSpeed = 0.0005f;
-    public float waitingTime;
-    public GameObject gameStart;
+    public float waitingTime; 
     bool ok = true;
 
     void Start()
     {
+        init();
+        setButton();
+        Invoke("startText", waitingTime);
+    }
+
+    void init()
+    {
         textDisplay.text = "";
         gameStart.SetActive(false);
-        // 오프닝 특성상 딜레이 설정
-        Invoke("startText", waitingTime);
+    }
+
+
+    void setButton()
+    {
+        if (buttonName.text == null) buttonName.text = " ";
+        buttonName.text = buttonNameValue;
     }
 
     void startText()
@@ -29,8 +51,6 @@ public class Dialog : MonoBehaviour
 
     void Update()
     {
-        Debug.Log("index : " + index);
-        Debug.Log("Length : " + sentences.Length);
     }
 
     IEnumerator Type()
@@ -49,11 +69,15 @@ public class Dialog : MonoBehaviour
                     textDisplay.text += '\n';
                     startText();
                 }
-                if (sentences.Length - 1 == index)
+                if (NextButton.lastDialog == true && textDisplay.text == sentences[index])
                 {
-                    typingSpeed = 0.00001f;
+                    checkButton = true;
+                }
+                if (check == sentences[index].Length)
+                {
                     gameStart.SetActive(true);
                 }
+
                 if (Input.GetMouseButton(0))
                 {
                     StopAllCoroutines();
@@ -68,7 +92,11 @@ public class Dialog : MonoBehaviour
                 {
                     gameStart.SetActive(true);
                     textDisplay.text += sentences[i] + '\n';
-                }                
+                }
+                if (NextButton.lastDialog == true)
+                {
+                    checkButton = true;
+                }
             }
         }
     }
