@@ -34,8 +34,6 @@ public class NextButton : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(index);
-        Debug.Log(lastDialog);
         if (index == next.Length-1 && Dialog.checkButton == true)
         {
             for (int i = 0; i < Button.Length; i++)

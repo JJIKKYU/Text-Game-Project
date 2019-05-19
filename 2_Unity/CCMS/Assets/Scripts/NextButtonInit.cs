@@ -8,9 +8,12 @@ public class NextButtonInit : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        for (int i=0; i < button.Length; i++)
+        if (button.Length > 0)
         {
-            button[i].SetActive(false);
+            for (int i=0; i < button.Length; i++)
+            {
+                button[i].SetActive(false);
+            }
         }
     }
 

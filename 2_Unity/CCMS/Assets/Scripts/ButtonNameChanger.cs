@@ -8,7 +8,6 @@ public class ButtonNameChanger : MonoBehaviour
     public TextMeshProUGUI[] buttonName;
     [TextArea]
     public string[] buttonNameValue;
-    public string[] sceneChange;
 
     void ButtonNameChange()
     {
