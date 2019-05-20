@@ -24,7 +24,7 @@ public class ChangeKeyword : MonoBehaviour
         if (keyword == "CCMSreset_no") GameCheckObject.KeywordList[7] = true;
         if (keyword == "CCMSreset_DLM") GameCheckObject.KeywordList[8] = true;
         if (keyword == "CCMSreset_forALL") GameCheckObject.KeywordList[9] = true;
-        if (keyword == "SYSTEMpackage_MY") GameCheckObject.KeywordList[10] = true;
-        if (keyword == "SYSTEMpackage_Emo") GameCheckObject.KeywordList[11] = true;
+        if (keyword == "SYSTEMpacakage_MY") GameCheckObject.KeywordList[10] = true;
+        if (keyword == "SYSTEMpacakage_Emo") GameCheckObject.KeywordList[11] = true;
     }
 }

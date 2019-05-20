@@ -12,7 +12,7 @@ public class GameCheckObject : MonoBehaviour
     public static bool EmotionGet = true;
 
     // 1-2B
-    public static bool DLMlink = false;
+    public static bool DLMlink = true;
     public static bool WHYforHuman = true;
 
     // 2-2B
@@ -29,7 +29,7 @@ public class GameCheckObject : MonoBehaviour
     public static bool CCMSreset_no = false;
 
     // 2A-4C
-    public static bool CCMSreset_DLM = false;
+    public static bool CCMSreset_DLM = true;
 
     // 2B-4B , 3A-3D-1B
     public static bool CCMSreset_forALL = false;

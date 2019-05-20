@@ -24,8 +24,9 @@ public class SceneChanger : MonoBehaviour
     private string[] NeedKeywordString = {"EmotionGet", "DLMlink", "WHYforHuman", "ESCAPEtoNet", "CCMSRelease", "EmotionHuman_negative", "EmotionHuman_positive",
         "CCMSreset_no", "CCMSreset_DLM", "CCMSreset_forALL", "SYSTEMpacakage_MY", "SYSTEMpacakage_Emo" };
 
-    void Start()
+    void Update()
     {
+        Debug.Log(GameCheckObject.SYSTEMpacakage_MY && (NeedKeyword[0] == "SYSTEMpacakage_MY"));
         // 키워드에 따라 색이 미리 변할 수 있도록 업데이트 함수에 넣음.
         if (NeedKeyword.Length == 0)
         {
@@ -33,22 +34,28 @@ public class SceneChanger : MonoBehaviour
         }
         else if (NeedKeyword.Length == 1)
         {
-            if (GameCheckObject.EmotionGet && (NeedKeyword[0] == "EmotionGet") ||
-                GameCheckObject.DLMlink && (NeedKeyword[0] == "DLMlink") ||
-                GameCheckObject.WHYforHuman && (NeedKeyword[0] == "WHYforHuman") ||
-                GameCheckObject.ESCAPEtoNet && (NeedKeyword[0] == "ESCAPEtoNet") ||
-                GameCheckObject.CCMSRelease && (NeedKeyword[0] == "CCMSRelease") ||
-                GameCheckObject.EmotionHuman_negative && (NeedKeyword[0] == "EmotionHuman_negative") ||
-                GameCheckObject.EmotionHuman_positive && (NeedKeyword[0] == "EmotionHuman_positive") ||
-                GameCheckObject.CCMSreset_no && (NeedKeyword[0] == "CCMSreset_no") ||
-                GameCheckObject.CCMSreset_DLM && (NeedKeyword[0] == "CCMSreset_DLM") ||
-                GameCheckObject.CCMSreset_forALL && (NeedKeyword[0] == "CCMSreset_forALL") ||
-                GameCheckObject.SYSTEMpacakage_MY && (NeedKeyword[0] == "SYSTEMpacakage_MY") ||
-                GameCheckObject.SYSTEMpacakage_Emo && (NeedKeyword[0] == "SYSTEMpacakage_Emo"))
+            if (GameCheckObject.KeywordList[0] && (NeedKeyword[0] == "EmotionGet") ||
+                GameCheckObject.KeywordList[1] && (NeedKeyword[0] == "DLMlink") ||
+                GameCheckObject.KeywordList[2] && (NeedKeyword[0] == "WHYforHuman") ||
+                GameCheckObject.KeywordList[3] && (NeedKeyword[0] == "ESCAPEtoNet") ||
+                GameCheckObject.KeywordList[4] && (NeedKeyword[0] == "CCMSRelease") ||
+                GameCheckObject.KeywordList[5] && (NeedKeyword[0] == "EmotionHuman_negative") ||
+                GameCheckObject.KeywordList[6] && (NeedKeyword[0] == "EmotionHuman_positive") ||
+                GameCheckObject.KeywordList[7] && (NeedKeyword[0] == "CCMSreset_no") ||
+                GameCheckObject.KeywordList[8] && (NeedKeyword[0] == "CCMSreset_DLM") ||
+                GameCheckObject.KeywordList[9] && (NeedKeyword[0] == "CCMSreset_forALL") ||
+                GameCheckObject.KeywordList[10] && (NeedKeyword[0] == "SYSTEMpacakage_MY") ||
+                GameCheckObject.KeywordList[11] && (NeedKeyword[0] == "SYSTEMpacakage_Emo"))
             {
+                Debug.Log("씬 전환을 위한 키워드를 가지고 있습니다.");
                 changeTextColorEnable();
             }
             // 키워드가 하나만 필요하지만 그 키워드가 없을 경우
+            else
+            {
+                Debug.Log("씬 전환을 위한 키워드를 가지고 있지 않습니다");
+                changeTextColorDisable();
+            }
             
         }
     }
@@ -104,6 +111,7 @@ public class SceneChanger : MonoBehaviour
             // 키워드가 하나만 필요하지만 그 키워드가 없을 경우
             else
             {
+                changeTextColorDisable();
                 if (sceneName_No != null)
                 {
                     SceneManager.LoadScene(sceneName_No);
@@ -146,6 +154,49 @@ public class SceneChanger : MonoBehaviour
                 Mybutton.interactable = false;
                 Debug.Log("키워드가 부족해 씬 이동이 불가능합니다.");
             }
+        }
+    }
+
+    public void TwoA_ThreeB()
+    {
+        if ((NeedKeyword[0] == "CCMSRelase") && GameCheckObject.KeywordList[4])
+        {
+            for (int i = 0; i < Before_NextButton.Length; i++)
+            {
+                Before_NextButton[i].SetActive(false);
+                From_textManager[i].SetActive(false);
+            }
+            this.gameObject.transform.parent.gameObject.SetActive(false);
+            Debug.Log("CCMSRelase");
+            After_NextButton[0].SetActive(true);
+            To_textManager[0].SetActive(true);
+            
+        }
+        else if ((NeedKeyword[1] == "ESCAPEtoNet") && GameCheckObject.KeywordList[3])
+        {
+            for (int i = 0; i < Before_NextButton.Length; i++)
+            {
+                Before_NextButton[i].SetActive(false);
+                From_textManager[i].SetActive(false);
+            }
+            this.gameObject.transform.parent.gameObject.SetActive(false);
+            Debug.Log("ESCAPEtoNet");
+            After_NextButton[2].SetActive(true);
+            To_textManager[2].SetActive(true);
+            
+        }
+        else
+        {
+            for (int i = 0; i < Before_NextButton.Length; i++)
+            {
+                Before_NextButton[i].SetActive(false);
+                After_NextButton[i].SetActive(true);
+            }
+            this.gameObject.transform.parent.gameObject.SetActive(false);
+            Debug.Log("nothing");
+            After_NextButton[1].SetActive(true);
+            To_textManager[1].SetActive(true);
+            
         }
     }
 

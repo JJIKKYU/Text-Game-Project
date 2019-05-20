@@ -13,10 +13,12 @@ public class NextButton : MonoBehaviour
     // 마지막에 꺼지면서 다음 버튼에게 토스할 버튼
     public GameObject[] next;
     public GameObject[] Button;
+    public GameObject UI;
     int index = 0;
 
     private void Awake()
     {
+        UI.SetActive(true);
         for (int i = 1; i < next.Length; i++)
         {
             next[i].GetComponent<Dialog>().enabled = false;
@@ -29,6 +31,7 @@ public class NextButton : MonoBehaviour
 
     private void Start()
     {
+        
         lastDialog = false;
     }
 

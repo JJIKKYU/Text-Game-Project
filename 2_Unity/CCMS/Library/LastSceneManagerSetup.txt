@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/03_Chapter_02-4.unity
+- path: Assets/mini_5_3A-2D.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0
